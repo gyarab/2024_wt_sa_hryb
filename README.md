@@ -9,7 +9,7 @@ V roce 1969 spolupracoval s Tedem Hoffem a Stanley Mazorem z Intelu na redukci t
 Později se připojil k Intelu v roce 1972. Tam spolupracoval s Fagginem na vývoji Intel 8080, vydaného v roce 1974. Shima poté vyvinul několik periferních čipů Intel, některé používané v [IBM PC](https://en.wikipedia.org/wiki/IBM_PC), jako je řadič přerušení 8259, programovatelný čip periferního rozhraní 8255 , 8253 čip časovače, 8257 čip s přímým přístupem do paměti ([DMA](https://en.wikipedia.org/wiki/Direct_memory_access)) a 8251 sériový komunikační čip [USART](https://en.wikipedia.org/wiki/USART). Poté nastoupil do společnosti Zilog, kde spolupracoval s Fagginem na vývoji Zilog Z80 (1976) a Z8000 (1979).
 
 
-![App Screenshot](https://i.seadn.io/gae/_4G7J7Fmbf_0cMPjr4EgDKIslrBkqVejQhzr2bdz-aY5DEAkmi9XpvvRkTf4UYMwFrfWC_NjN8Qkd4CV-T3_wuTlvQ_aO7GRGkLu?auto=format&dpr=1&w=1000)
+![Masatoshi Shima foto](https://i.seadn.io/gae/_4G7J7Fmbf_0cMPjr4EgDKIslrBkqVejQhzr2bdz-aY5DEAkmi9XpvvRkTf4UYMwFrfWC_NjN8Qkd4CV-T3_wuTlvQ_aO7GRGkLu?auto=format&dpr=1&w=1000)
 
 (obrázek z opensea.io)
 
