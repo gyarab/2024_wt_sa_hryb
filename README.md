@@ -19,5 +19,3 @@ Později se připojil k Intelu v roce 1972. Tam spolupracoval s Fagginem na výv
  - Na jaře 1967 nastoupil do společnosti [Busicom](https://en.wikipedia.org/wiki/Busicom), výrobce obchodních kalkulaček
  - 1997 Kyoto Prize (Advanced Technology)
  - 2009 Computer History Museum 
-
-(obrázek z opensea.io)
