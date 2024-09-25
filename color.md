@@ -1,3 +1,3 @@
-# Gymnázium Arabská
+# Nike
 
-![Gymnázium Arabská](https://avatars.githubusercontent.com/u/34084239?s=280&v=4)
+![Nike](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png)
