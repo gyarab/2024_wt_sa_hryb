@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pexeso</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 120px);
+            gap: 10px;
+            justify-content: center;
+        }
+        .card {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            perspective: 1000px;
+        }
+        .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+        }
+        .card-front {
+            background-image: url('https://www.zatrolene-hry.cz/galerie/4648/main.large.jpg?5576c6aa1843d628a82a02c6283dd725');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #000000;
+        }
+        .card-back {
+            background-color: #333;
+            transform: rotateY(180deg);
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #000000;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #15b7f2;
+            color: #fff;
+        }
+        button:hover {
+            background-color: #23a7d7;
+        }
+        .score {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin: 20px 0;
+        }
+        .pexeso {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .pe {
+            color: black;
+        }
+        .xe {
+            color: red;
+        }
+        .so {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span class="pexeso">
+            <span class="pe">Pe</span><span class="xe">xe</span><span class="so">so</span>
+        </span>
+    </h1>
+    <p class="score">Skóre: <span id="score">0</span></p>
+    <div class="game-board" id="gameBoard"></div>
+    <div class="controls">
+        <button id="restartButton">Restart</button>
+    </div>
+
+    <script>
+        const images = [
+            'purple_ball.jpg',
+            'yellow_ball.jpg',
+            'black_ball.jpg',
+            'blue_ball.jpg',
+            'rainbow_ball.jpg',
+            'red_ball.jpg',
+            'green_ball.jpg',
+            'purple_ball.jpg'
+        ];
+
+        let cards, gameBoard, flippedCards, matchedPairs, score;
+
+        function initializeGame() {
+            gameBoard = document.getElementById('gameBoard');
+            gameBoard.innerHTML = '';
+            flippedCards = [];
+            matchedPairs = 0;
+            score = 0;
+            updateScore();
+
+            cards = [...images, ...images].sort(() => Math.random() - 0.5);
+
+            cards.forEach((src, index) => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.index = index;
+                const cardInner = document.createElement('div');
+                cardInner.classList.add('card-inner');
+                const cardFront = document.createElement('div');
+                cardFront.classList.add('card-front');
+                const cardBack = document.createElement('div');
+                cardBack.classList.add('card-back');
+                const img = document.createElement('img');
+                img.src = src;
+                cardBack.appendChild(img);
+                cardInner.appendChild(cardFront);
+                cardInner.appendChild(cardBack);
+                card.appendChild(cardInner);
+                gameBoard.appendChild(card);
+                card.addEventListener('click', () => flipCard(card));
+            });
+        }
+
+        function flipCard(card) {
+            if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
+                card.classList.add('flipped');
+                flippedCards.push(card);
+
+                if (flippedCards.length === 2) {
+                    checkMatch();
+                }
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            const img1 = card1.querySelector('img').src;
+            const img2 = card2.querySelector('img').src;
+            if (img1 === img2) {
+                matchedPairs++;
+                score += 10;
+                updateScore();
+                setTimeout(() => {
+                    card1.style.visibility = 'hidden';
+                    card2.style.visibility = 'hidden';
+                    flippedCards = [];
+
+                    if (matchedPairs === images.length) {
+                        setTimeout(() => alert('You win!'), 500);
+                    }
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    flippedCards = [];
+                }, 1000);
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+        }
+
+        document.getElementById('restartButton').addEventListener('click', initializeGame);
+        initializeGame();
+    </script>
+</body>
+</html>
